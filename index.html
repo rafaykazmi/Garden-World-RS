@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden World - Premium Gardening</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --green-primary: #28a745;
+            --green-dark: #1e7e34;
+            --green-light: #e8f5e8;
+            --orange-accent: #fd7e14;
+            --gold-trust: #ffd700;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--green-light);
+        }
+        
+        .navbar {
+            background: rgba(40, 167, 69, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(40,167,69,0.3);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #fff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(40,167,69,0.6), rgba(40,167,69,0.4)),
+                        url('https://i.pinimg.com/originals/31/66/cf/3166cfceaa7853931d6e4833f5508406.gif') center/cover;
+            height: 100vh;
+            color: white;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+        
+        .btn-custom {
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(45deg, var(--orange-accent), #e65c00);
+            border: none;
+            box-shadow: 0 8px 25px rgba(253,126,20,0.4);
+        }
+        
+        .btn-outline-custom {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-primary-custom:hover, .btn-outline-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+        
+        .card-custom {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .card-custom:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(40,167,69,0.2);
+        }
+        
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--green-primary), #20c997);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(40,167,69,0.3);
+        }
+        
+        .product-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* Gardening Tips Section */
+        .tips-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa, var(--green-light));
+        }
+
+        .tips-content-box {
+            height: 400px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(40,167,69,0.15);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: white;
+        }
+
+        .tips-content-box:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(40,167,69,0.25);
+        }
+
+        .tips-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .tips-text-box {
+            background: linear-gradient(135deg, var(--green-primary), #20c997);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(40,167,69,0.3);
+            padding: 3rem;
+            color: white;
+            height: 400px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tips-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 100 Years Trust Section */
+        .trust-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--green-dark), var(--green-primary));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .trust-badge {
+            background: linear-gradient(45deg, var(--gold-trust), #ffed4a);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 100px rgba(255,215,0,0.3);
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .trust-number {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, var(--gold-trust));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .accordion-item-custom {
+            border: none;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button-custom {
+            background: linear-gradient(135deg, var(--green-primary), #20c997);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: 20px !important;
+        }
+
+        .accordion-button-custom:not(.collapsed) {
+            background: linear-gradient(135deg, var(--green-dark), var(--green-primary));
+            color: white;
+        }
+
+        .accordion-body-custom {
+            padding: 2rem;
+            background: white;
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, var(--green-dark), #155724);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-contact-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact-box:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37,211,102,0.6);
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-seedling me-2"></i>Garden World</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tips">Tips</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./how to use.html">How to use</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center text-center text-white">
+        <div class="hero-content container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <h1 class="display-3 fw-bold mb-4">Your Garden Paradise</h1>
+                    <p class="lead mb-5">Premium plants, tools & expert advice. Transform your space with Garden World.</p>
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                        <a href="#products" class="btn btn-primary-custom btn-lg btn-custom">Shop Now <i class="fas fa-shopping-cart ms-2"></i></a>
+                        <a href="#tips" class="btn btn-outline-custom btn-lg btn-custom">Gardening Tips <i class="fas fa-play ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gardening Tips Section -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h2 class="display-4 fw-bold mb-4" style="color: var(--green-primary);">Tips for Gardening</h2>
+                    <p class="lead">Expert advice to make your garden thrive</p>
+                </div>
+            </div>
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="tips-text-box">
+                        <div class="text-center text-white">
+                            <div class="tips-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="fw-bold mb-4" style="font-size: 2.2rem;">Pro Gardening Tips</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3 fs-5"><i class="fas fa-check-circle me-2"></i>Test soil pH regularly</li>
+                                <li class="mb-3 fs-5"><i class="fas fa-check-circle me-2"></i>Use organic mulch</li>
+                                <li class="mb-3 fs-5"><i class="fas fa-check-circle me-2"></i>Water deeply, less often</li>
+                                <li class="mb-3 fs-5"><i class="fas fa-check-circle me-2"></i>Companion planting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="tips-content-box">
+                        <img src="https://i.pinimg.com/originals/38/4c/2e/384c2ed869351a5a5fc3c473e0dd198e.gif" alt="Gardening Animation" class="tips-video">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h2 class="display-4 fw-bold mb-4" style="color: var(--green-primary);">Why Choose Us?</h2>
+                    <p class="lead">Everything you need for a thriving garden</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-custom h-100 text-center p-4">
+                        <div class="card-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Premium Plants</h4>
+                        <p class="card-text">Rare succulents, indoor plants & seasonal flowers delivered fresh.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card card-custom h-100 text-center p-4">
+                        <div class="card-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Pro Tools</h4>
+                        <p class="card-text">Professional gardening equipment & smart irrigation systems.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card card-custom h-100 text-center p-4">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Expert Advice</h4>
+                        <p class="card-text">Free consultations from certified horticulturists.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="py-5 bg-white">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h2 class="display-4 fw-bold mb-4" style="color: var(--green-primary);">Featured Products</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card card-custom h-100">
+                        <img src="https://www.urbanplant.in/cdn/shop/files/Calendula.webp?v=1736248908&width=1200" class="card-img-top" alt="">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">RS Sunflower Seeds</h5>
+                            <h4 class="text-warning fw-bold mb-3">500 pkr</h4>
+                             <button class="btn btn-primary-custom w-100" onclick="addToCart(this)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card card-custom h-100">
+                        <img src="https://www.urbanplant.in/cdn/shop/files/toolprimarybigsizewebp.webp?v=1714798134&width=1200" class="card-img-top" alt="">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">gardening accessories</h5>
+                            <h4 class="text-warning fw-bold mb-3">2000 pkr</h4>
+                             <button class="btn btn-primary-custom w-100" onclick="addToCart(this)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card card-custom h-100">
+                        <img src="https://www.urbanplant.in/cdn/shop/files/Primary_webp_2_8600b64c-9508-4801-a644-57820ce8a27e.webp?v=1754485988&width=1200" class="card-img-top" alt="">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Decorative pebbles</h5>
+                            <h4 class="text-warning fw-bold mb-3">3000 pkr</h4>
+                             <button class="btn btn-primary-custom w-100" onclick="addToCart(this)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row mt-5 pt-4 text-center" data-aos="fade-up">
+                <div class="col-12">
+                    <p class="text-muted mb-3">Looking for more varieties?</p>
+                    <a href="./related products.html" class="btn btn-outline-success btn-lg btn-custom px-5">
+                        View All Related Products <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 100 Years Trust Section -->
+    <section id="trust" class="tips-section" style="background: white;">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="trust-content">
+                    <h2 class="display-4 fw-bold mb-4" style="color: var(--green-primary);">07 Years of Trust</h2>
+                    <p class="lead mb-4" style="color: #555;">
+                        Since 2019, Garden World has been more than just a plant shop. We are a community of nature lovers dedicated to bringing life into your homes and workspaces.
+                    </p>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="p-3 border-start border-4 border-success bg-light">
+                                <h4 class="fw-bold mb-0">10k+</h4>
+                                <small class="text-muted">Happy Clients</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border-start border-4 border-success bg-light">
+                                <h4 class="fw-bold mb-0">500+</h4>
+                                <small class="text-muted">Plant Varieties</small>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-4">
+                        Hamari 7 saal ki mehnat aur aapka aetmad hi hamari pehchan hai. Karachi se shuru hone wala ye safar ab pure Pakistan mein phail chuka hai.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="tips-content-box">
+                    <img src="https://i.pinimg.com/originals/73/df/db/73dfdbafba0b49913cd9a20cd4238c1e.gif" 
+                         alt="Gardening Passion" class="tips-video">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="row text-center mb-6">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h2 class="display-4 fw-bold mb-4" style="color: var(--green-primary);">Frequently Asked Questions</h2>
+                    <p class="lead">Everything you need to know before shopping</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item accordion-item-custom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button accordion-button-custom" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="fas fa-seedling me-3"></i>How long does delivery take?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body accordion-body-custom">
+                                    Same day delivery within Karachi, 2-3 days nationwide. Free delivery on orders above 2000 PKR.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item accordion-item-custom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="fas fa-shipping-fast me-3"></i>Do you offer plant care guarantees?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body accordion-body-custom">
+                                    Yes! 7-day healthy plant guarantee. If your plant arrives damaged, we'll replace it free of charge.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item accordion-item-custom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="fas fa-credit-card me-3"></i>What payment methods do you accept?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body accordion-body-custom">
+                                    Cash on delivery, EasyPaisa, JazzCash, bank transfer, and all major credit/debit cards.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item accordion-item-custom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="fas fa-tools me-3"></i>Are your plants suitable for beginners?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body accordion-body-custom">
+                                    Absolutely! We label all plants with care level (Easy/Medium/Hard) and include free care guides with every order.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENHANCED FOOTER -->
+    <footer id="contact" class="py-5">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row mb-5">
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <h4 class="mb-4"><i class="fas fa-seedling me-2" style="color: var(--gold-trust);"></i>Garden World</h4>
+                    <p class="mb-4">Karachi's premier gardening destination | Nationwide Delivery</p>
+                    <div class="d-flex gap-3">
+                        <a href="mailto:rafayshahkazmiofficial@gmail.com" class="text-white">
+                            <i class="fas fa-envelope me-2"></i>rafayshahkazmiofficial@gmail.com
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="mb-4"><i class="fas fa-phone me-2" style="color: var(--gold-trust);"></i>Phone Numbers</h5>
+                    <div class="footer-contact-box">
+                        <div class="mb-3">
+                            <i class="fas fa-mobile-alt me-2"></i>+92 345 3023673
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-mobile-alt me-2"></i>+92 320 8241947
+                        </div>
+                        <a href="https://wa.me/+923453023673" target="_blank" class="whatsapp-btn w-100 text-center">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Us Now
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="mb-4"><i class="fas fa-map-marker-alt me-2" style="color: var(--gold-trust);"></i>Location</h5>
+                    <div class="footer-contact-box">
+                        <div class="mb-3 fs-5 fw-bold">Aptech Malir Branch</div>
+                        <p>Malir, Karachi, Pakistan<br>Mon-Sat: 9AM-8PM<br>Sunday: 10AM-6PM</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline-light btn-custom w-100">
+                            <i class="fas fa-map me-2"></i>Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+            <div class="text-center">
+                <p>&copy; 2026 Garden World. All rights reserved. | Serving generations with love & care 🌱</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+               function addToCart(btn) {
+        
+            btn.classList.remove('btn-primary-custom');
+            btn.classList.add('btn-cart-success');
+            btn.innerHTML = '<i class="fas fa-check me-2"></i> Added to Cart';
+            
+    
+            btn.style.transform = "scale(1.05)";
+            setTimeout(() => {
+                btn.style.transform = "scale(1)";
+            }, 200);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

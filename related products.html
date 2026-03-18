@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- SweetAlert2 CDN (simple popup) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         body{
@@ -29,11 +31,59 @@
         }
 
         /* --- NAVBAR STYLING --- */
+        /* Updated Navbar with White Buttons & Hover Effects */
         .navbar {
             background: rgba(40, 167, 69, 0.95) !important;
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(40,167,69,0.3);
         }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #fff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* New Nav Link Styling - White with Green Hover */
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgba(255,255,255,0.2) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            background: rgba(255,255,255,0.3) !important;
+            color: white !important;
+        }
+        
 
         .section-title {
             color: var(--green-primary);
@@ -93,12 +143,12 @@
             font-weight: 600;
             color: white;
             transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
-        /* Added to Cart State */
-        .btn-added {
-            background: var(--green-dark) !important;
-            pointer-events: none;
+        .btn-primary-custom:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(253,126,20,0.4);
         }
 
         .price-tag {
@@ -133,6 +183,11 @@
         }
         
         .whatsapp-btn:hover { color: white; background: #128c7e; }
+
+        /* optional small style for popup */
+        .swal2-popup {
+            font-family: 'Poppins', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +204,7 @@
                     <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./index.html">Tips</a></li>
                     <li class="nav-item"><a class="nav-link" href="./how to use.html">How to use</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./related products.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./related products.html">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="./index.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
                 </ul>
@@ -187,7 +242,7 @@
                             <div class="card-body text-center">
                                 <h6 class="fw-bold" style="height: 40px; overflow: hidden;">${p.title}</h6>
                                 <p class="price-tag">${p.price} pkr</p>
-                                <button class="btn btn-primary-custom btn-sm w-100" onclick="addToCart(this)">
+                                <button class="btn btn-primary-custom btn-sm w-100" onclick='addToCart("${p.title}")'>
                                     <i class="fas fa-cart-plus me-2"></i>Add to Cart
                                 </button>
                             </div>
@@ -243,13 +298,18 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
-        // Add to Cart Function
-        function addToCart(btn) {
-            btn.innerHTML = '<i class="fas fa-check me-2"></i>Added to Cart';
-            btn.classList.add('btn-added');
-            
-            // Optional: Show a small toast or alert
-            console.log("Product added to collection!");
+        // Simple SweetAlert2 popup as requested
+        function addToCart(productTitle) {
+            Swal.fire({
+                title: "Added To Cart",
+                text: productTitle + " added to cart!",
+                icon: "success",
+                confirmButtonColor: "#28a745",
+                timer: 2000,
+                showConfirmButton: true,
+                background: '#ffffff',
+                backdrop: `rgba(40,167,69,0.2)`
+            });
         }
     </script>
 </body>

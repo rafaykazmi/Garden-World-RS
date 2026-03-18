@@ -13,8 +13,15 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <style>
+
+        /* CSS SECTION OF HOME */
+        /* EPROJECT GARDEN WORLD CREATED BY SYED RAFAY KAZMI */
+
+
           body{
           overflow-x: hidden !important;
         }
@@ -31,6 +38,19 @@
             background: var(--green-light);
         }
         
+
+
+
+
+
+
+
+
+
+
+
+        /* NAVBER  */
+
         .navbar {
             background: rgba(40, 167, 69, 0.95) !important;
             backdrop-filter: blur(10px);
@@ -44,8 +64,61 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+    
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgba(255,255,255,0.2) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            background: rgba(255,255,255,0.3) !important;
+            color: white !important;
+        }
         
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
         /* Hero Section */
+
+        /* pinterest gif  */
         .hero-section {
             background: linear-gradient(rgba(40,167,69,0.6), rgba(40,167,69,0.4)),
                         url('https://i.pinimg.com/originals/31/66/cf/3166cfceaa7853931d6e4833f5508406.gif') center/cover;
@@ -81,6 +154,10 @@
         .btn-primary-custom:hover, .btn-outline-custom:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            color: white !important;
+            background-color: #1e7e34 !important;
+
+        
         }
         
         .card-custom {
@@ -109,13 +186,30 @@
             color: white;
             box-shadow: 0 10px 30px rgba(40,167,69,0.3);
         }
+        .btn-primary-custom {
+    background: white;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
+    color: darkgreen !important;
+}
+
         
+
         .product-card img {
             height: 220px;
             object-fit: cover;
         }
 
-        /* Gardening Tips Section */
+
+
+
+
+
+
+
+
+        /* TIP FOR GARDENING SECTION  */
+
         .tips-section {
             padding: 5rem 0;
             background: linear-gradient(135deg, #f8f9fa, var(--green-light));
@@ -166,7 +260,16 @@
             backdrop-filter: blur(10px);
         }
 
-        /* 100 Years Trust Section */
+
+
+
+
+
+
+
+
+
+        /* TRUST SECTION */
         .trust-section {
             padding: 6rem 0;
             background: linear-gradient(135deg, var(--green-dark), var(--green-primary));
@@ -204,6 +307,20 @@
             margin-bottom: 1rem;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /* FAQ Section */
         .faq-section {
             padding: 6rem 0;
@@ -239,7 +356,18 @@
             border-radius: 0 0 20px 20px;
         }
 
-        /* Enhanced Footer */
+
+
+
+
+
+
+
+
+
+
+
+        /* new Footer */
         footer {
             background: linear-gradient(135deg, var(--green-dark), #155724);
             color: white;
@@ -261,24 +389,120 @@
             transform: translateY(-5px);
         }
 
-        .whatsapp-btn {
-            background: #25D366;
+      .whatsapp-btn {
+            background: #25d366;
             color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+            transition: 0.3s;
         }
+        
+        .whatsapp-btn:hover { color: white; background: #128c7e; }
 
         .whatsapp-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(37,211,102,0.6);
             color: white !important;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* carts ki css code  */
+        /* PRODUCT CARDS CSS */
+
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ffd700;
+    color: #1e7e34;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 2;
+}
+.price-tag {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: inline-block;
+    margin: 10px 0;
+}
+.btn-cart {
+    background: linear-gradient(45deg, #25d366, #128c7e);
+    border: none;
+    margin: 7px 3px;
+    border-radius: 30px;
+    padding: 12px 1px;
+    font-weight: 600;
+    font-size: 14px;
+    width: 100%;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+.btn-cart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(37,211,102,0.4);
+    color: white !important;
+}
+.btn-cart.added {
+    background: linear-gradient(45deg, #28a745, #20c997) !important;
+}
+
+
+
+ /* PRODUCT CARDS CSS  */
+
+
+.product-card {
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    background: white;
+    position: relative;
+    margin-left: 0 !important; /* FIXED - Ye line add ki */
+    margin-bottom: 30px;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.btn-primary-custom{
+    color: rgb(24, 100, 14) !important;
+
+}
+
+
+.btn-primary-custom{
+    background: linear-gradient(45deg, var(#ffffff) , #ffffff) !important;
+    }
+
     </style>
 </head>
 <body>
@@ -310,7 +534,7 @@
                     <h1 class="display-3 fw-bold mb-4">Your Garden Paradise</h1>
                     <p class="lead mb-5">Premium plants, tools & expert advice. Transform your space with Garden World.</p>
                     <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
-                        <a href="#products" class="btn btn-primary-custom btn-lg btn-custom">Shop Now <i class="fas fa-shopping-cart ms-2"></i></a>
+                        <a href="#products" class="btn btn-primary-custom btn-lg btn-custom btn-1 ">Buy Now <i class="fas fa-shopping-cart ms-2"></i></a>
                         <a href="#tips" class="btn btn-outline-custom btn-lg btn-custom">Gardening Tips <i class="fas fa-play ms-2"></i></a>
                     </div>
                 </div>
@@ -346,7 +570,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                     <div class="tips-content-box">
-                        <img src="https://i.pinimg.com/originals/38/4c/2e/384c2ed869351a5a5fc3c473e0dd198e.gif" alt="Gardening Animation" class="tips-video">
+                        <img src="https://i.pinimg.com/originals/43/5e/cf/435ecf8d0bde12893525daab8c44a380.gif" alt="Gardening Animation" class="tips-video">
                     </div>
                 </div>
             </div>
@@ -393,59 +617,71 @@
             </div>
         </div>
     </section>
+   
+<!-- PRODUCTS SECTION (Same structure - No Bootstrap changes) -->
+<section id="products" class="py-5" style="padding: 6rem 0; background: linear-gradient(135deg, #f8f9fa, var(--green-light));">
+    <!-- HEADING -->
+    <div class="section-header text-center mb-5" style="padding: 0 10%;">
+        <h2 style="font-size: 3.5rem; font-weight: 700; color: var(--green-primary); margin-bottom: 1rem;">Featured Products</h2>
+        <p style="font-size: 1.3rem; color: #666;">Best selling gardening essentials from Garden World</p>
+    </div>
 
-    <!-- PRODUCTS SECTION -->
-    <section id="products" class="py-5 bg-white">
-        <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-lg-8 mx-auto" data-aos="fade-up">
-                    <h2 class="display-4 fw-bold mb-4" style="color: var(--green-primary);">Featured Products</h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="card card-custom h-100">
-                        <img src="https://www.urbanplant.in/cdn/shop/files/Calendula.webp?v=1736248908&width=1200" class="card-img-top" alt="">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold">RS Sunflower Seeds</h5>
-                            <h4 class="text-warning fw-bold mb-3">500 pkr</h4>
-                             <button class="btn btn-primary-custom w-100" onclick="addToCart(this)">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="card card-custom h-100">
-                        <img src="https://www.urbanplant.in/cdn/shop/files/toolprimarybigsizewebp.webp?v=1714798134&width=1200" class="card-img-top" alt="">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold">gardening accessories</h5>
-                            <h4 class="text-warning fw-bold mb-3">2000 pkr</h4>
-                             <button class="btn btn-primary-custom w-100" onclick="addToCart(this)">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="card card-custom h-100">
-                        <img src="https://www.urbanplant.in/cdn/shop/files/Primary_webp_2_8600b64c-9508-4801-a644-57820ce8a27e.webp?v=1754485988&width=1200" class="card-img-top" alt="">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold">Decorative pebbles</h5>
-                            <h4 class="text-warning fw-bold mb-3">3000 pkr</h4>
-                             <button class="btn btn-primary-custom w-100" onclick="addToCart(this)">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                 <div class="row mt-5 pt-4 text-center" data-aos="fade-up">
-                <div class="col-12">
-                    <p class="text-muted mb-3">Looking for more varieties?</p>
-                    <a href="./related products.html" class="btn btn-outline-success btn-lg btn-custom px-5">
-                        View All Related Products <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
-                </div>
-            </div>
+    <!-- PRODUCT CARDS -->
+    <div class="products-container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        <!-- Card 1 -->
+        <div class="product-card" data-aos="zoom-in" data-aos-delay="100" style="flex: 0 0 350px;">
+            <div class="product-badge">Bestseller</div>
+            <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/fc1090d9c460036ff92fb6c5b147115861515dd1.jpg" alt="RS Sunflower Seeds">
+            <div class="card-body" style="padding: 25px; text-align: center;">
+                <h5 style="font-weight: 700; margin-bottom: 15px; font-size: 1.4rem;">RS Sunflower Seeds</h5>
+                <div class="price-tag">500 PKR</div>
+                <button class="btn-cart" onclick="addToCart('RS Sunflower Seeds', 500, this)">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+                <small style="display: block; margin-top: 15px; color: #666; font-weight: 500;"></small>
             </div>
         </div>
-    </section>
 
-    <!-- 100 Years Trust Section -->
+        <!-- Card 2 -->
+        <div class="product-card" data-aos="zoom-in" data-aos-delay="200" style="flex: 0 0 350px;">
+            <div class="product-badge">New Arrival</div>
+            <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/f112e857d464f2e2de4de3c5afb0c7be870eba84.jpg" alt="Gardening Tools">
+            <div class="card-body" style="padding: 25px; text-align: center;">
+                <h5 style="font-weight: 700; margin-bottom: 15px; font-size: 1.4rem;">Pro Gardening Tools</h5>
+                <div class="price-tag">2000 PKR</div>
+                <button class="btn-cart" onclick="addToCart('Pro Gardening Tools', 2000, this)">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+                <small style="display: block; margin-top: 15px; color: #666; font-weight: 500;"></small>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="product-card" data-aos="zoom-in" data-aos-delay="300" style="flex: 0 0 350px;">
+            <div class="product-badge">Limited Stock</div>
+            <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/72090eb8add87793aa821ab41d984c209ed395fc.jpg" alt="Decorative Pebbles">
+            <div class="card-body" style="padding: 25px; text-align: center;">
+                <h5 style="font-weight: 700; margin-bottom: 15px; font-size: 1.4rem;">Decorative Pebbles</h5>
+                <div class="price-tag">3000 PKR</div>
+                <button class="btn-cart" onclick="addToCart('Decorative Pebbles', 3000, this)">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+                <small style="display: block; margin-top: 15px; color: #666; font-weight: 500;"></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- RELATED PRODUCTS BUTTON -->
+    <div class="section-footer text-center mt-5">
+        <p style="font-size: 1.2rem; color: #666; margin-bottom: 20px;">Looking for more varieties?</p>
+        <a href="./related products.html" class="btn btn-primary-custom btn-lg btn-custom" style="font-size: 1.2rem;">
+            View All Related Products <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</section>
+
+
+    <!-- 07 Years Trust Section code -->
     <section id="trust" class="tips-section" style="background: white;">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -551,16 +787,15 @@
         </div>
     </section>
 
-    <!-- ENHANCED FOOTER -->
-    <footer id="contact" class="py-5">
+    <!--FOOTER ka code -->
+   <footer id="contact" class="py-5">
         <div class="container">
-            <!-- Main Footer Content -->
             <div class="row mb-5">
                 <div class="col-lg-4 mb-4" data-aos="fade-up">
                     <h4 class="mb-4"><i class="fas fa-seedling me-2" style="color: var(--gold-trust);"></i>Garden World</h4>
                     <p class="mb-4">Karachi's premier gardening destination | Nationwide Delivery</p>
                     <div class="d-flex gap-3">
-                        <a href="mailto:rafayshahkazmiofficial@gmail.com" class="text-white">
+                        <a href="mailto:rafayshahkazmiofficial@gmail.com" class="text-white text-decoration-none">
                             <i class="fas fa-envelope me-2"></i>rafayshahkazmiofficial@gmail.com
                         </a>
                     </div>
@@ -568,12 +803,8 @@
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <h5 class="mb-4"><i class="fas fa-phone me-2" style="color: var(--gold-trust);"></i>Phone Numbers</h5>
                     <div class="footer-contact-box">
-                        <div class="mb-3">
-                            <i class="fas fa-mobile-alt me-2"></i>+92 345 3023673
-                        </div>
-                        <div class="mb-3">
-                            <i class="fas fa-mobile-alt me-2"></i>+92 320 8241947
-                        </div>
+                        <div class="mb-2"><i class="fas fa-mobile-alt me-2"></i>+92 345 3023673</div>
+                        <div class="mb-3"><i class="fas fa-mobile-alt me-2"></i>+92 320 8241947</div>
                         <a href="https://wa.me/+923453023673" target="_blank" class="whatsapp-btn w-100 text-center">
                             <i class="fab fa-whatsapp"></i> WhatsApp Us Now
                         </a>
@@ -582,19 +813,17 @@
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <h5 class="mb-4"><i class="fas fa-map-marker-alt me-2" style="color: var(--gold-trust);"></i>Location</h5>
                     <div class="footer-contact-box">
-                        <div class="mb-3 fs-5 fw-bold">Aptech Malir Branch</div>
-                        <p>Malir, Karachi, Pakistan<br>Mon-Sat: 9AM-8PM<br>Sunday: 10AM-6PM</p>
-                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline-light btn-custom w-100">
+                        <div class="mb-2 fw-bold">Aptech Malir Branch</div>
+                        <p class="small">Malir, Karachi, Pakistan<br>Mon-Sat: 9AM-8PM</p>
+                        <a href="#" class="btn btn-outline-light btn-sm w-100">
                             <i class="fas fa-map me-2"></i>Get Directions
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Copyright -->
             <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
             <div class="text-center">
-                <p>&copy; 2026 Garden World. All rights reserved. | Serving generations with love & care 🌱</p>
+                <p>© 2026 Garden World. All rights reserved. | Serving generations with love & care 🌱</p>
             </div>
         </div>
     </footer>
@@ -602,22 +831,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-               function addToCart(btn) {
-        
-            btn.classList.remove('btn-primary-custom');
-            btn.classList.add('btn-cart-success');
-            btn.innerHTML = '<i class="fas fa-check me-2"></i> Added to Cart';
-            
-    
-            btn.style.transform = "scale(1.05)";
-            setTimeout(() => {
-                btn.style.transform = "scale(1)";
-            }, 200);
-        }
+        AOS.init({ duration: 1000, once: true });
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -632,6 +846,51 @@
                 }
             });
         });
+
+
+        // carts ki javascript code 
+        // CART FUNCTIONALITY JS
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function addToCart(name, price, button) {
+    // Check if item already exists
+    const existingItem = cart.find(item => item.name === name);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
+    
+    // Update localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Animate button
+    button.innerHTML = '<i class="fas fa-check me-2"></i>Added!';
+    button.classList.add('added');
+    button.style.transform = 'scale(0.98)';
+    
+    setTimeout(() => {
+        button.innerHTML = '<i class="fas fa-shopping-cart me-2"></i>Add to Cart';
+        button.classList.remove('added');
+        button.style.transform = 'scale(1)';
+    }, 2000);
+    
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartIcon = document.querySelector('.cart-count');
+    if (cartIcon) {
+        cartIcon.textContent = totalItems;
+        cartIcon.style.display = totalItems > 0 ? 'inline' : 'none';
+    }
+}
+
+// Initialize cart count on page load
+document.addEventListener('DOMContentLoaded', updateCartCount);
+
     </script>
 </body>
 </html>
